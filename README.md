@@ -57,3 +57,82 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+---
+
+## Cashier-Learn
+
+Aplikasi kasir berbasis web dibangun dengan Laravel 11, Blade, Bootstrap 5, dan Supabase (PostgreSQL).
+
+## Tech Stack
+
+- **Backend**: Laravel 11
+- **Frontend**: Blade + Bootstrap 5
+- **Database**: Supabase (PostgreSQL)
+
+## Fitur
+
+- Authentication (login/logout) dengan role Admin & Kasir
+- **Dashboard** - ringkasan total produk, transaksi, pendapatan, dan stok menipis
+- **Manajemen Produk** - CRUD produk dengan kategori dan stok
+- **Manajemen Kategori** - CRUD kategori produk
+- **Manajemen User** - CRUD user dengan role admin/kasir (admin only)
+- **Transaksi** - proses penjualan dengan keranjang belanja interaktif
+- **Struk** - cetak struk transaksi
+- **Laporan** - laporan penjualan dengan filter tanggal (admin only)
+
+## Alur Aplikasi
+
+```
+Login
+  ├── Admin
+  │   ├── Dashboard (statistik)
+  │   ├── Transaksi Baru
+  │   ├── Riwayat Transaksi
+  │   ├── Manajemen Produk (CRUD)
+  │   ├── Manajemen Kategori (CRUD)
+  │   ├── Manajemen User (CRUD)
+  │   └── Laporan Penjualan (filter tanggal)
+  │
+  └── Kasir
+      ├── Dashboard
+      ├── Transaksi Baru
+      │   ├── Pilih produk dari daftar
+      │   ├── Atur jumlah item
+      │   ├── Input uang bayar
+      │   └── Proses → Cetak Struk
+      └── Riwayat Transaksi
+```
+
+## Instalasi
+
+```bash
+git clone https://github.com/MAgSAsli/Cashier-App.git
+cd Cashier-App
+composer install
+cp .env.example .env
+php artisan key:generate
+```
+
+Isi konfigurasi database di `.env`:
+
+```env
+DB_CONNECTION=pgsql
+DB_HOST=your-supabase-host
+DB_PORT=5432
+DB_DATABASE=postgres
+DB_USERNAME=postgres
+DB_PASSWORD=your-password
+```
+
+```bash
+php artisan migrate --seed
+php artisan serve
+```
+
+## Akun Default
+
+| Role  | Email             | Password |
+|-------|-------------------|----------|
+| Admin | admin@cashier.com | 123      |
+| Kasir | kasir@cashier.com | 123      |
